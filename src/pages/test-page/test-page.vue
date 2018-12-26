@@ -1,6 +1,8 @@
 <template>
   <div class="test-page">
     test-page
+    <router-link tag="div" to="sample?h=123">sample</router-link>
+    <base-router-view></base-router-view>
   </div>
 </template>
 
@@ -11,6 +13,9 @@
     name: PAGE_NAME,
     data() {
       return {}
+    },
+    created() {
+      // alert(JSON.stringify(this.$route.query))
     }
   }
 </script>

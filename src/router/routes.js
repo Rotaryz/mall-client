@@ -1,30 +1,30 @@
 export default [
-  // 测试页面配置
   {
-    path: '/test-page1',
-    name: 'test-page1',
-    component: () => lazyLoadView(import('@pages/test-page1/test-page1'))
+    path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () => lazyLoadView(import('@pages/home/home')),
   },
   // 测试页面注释
   {
     path: '/test-page',
     name: 'test-page',
-    component: () => lazyLoadView(import('@pages/test-page/test-page'))
-  },
-  {
-    path: '/',
-    name: 'home',
-    component: () => lazyLoadView(import('@pages/home/home'))
-  },
-  {
-    path: '/sample',
-    name: 'sample',
-    component: () => lazyLoadView(import('@pages/sample/sample'))
-  },
-  {
-    path: '/other-pages',
-    name: 'other-pages',
-    component: () => lazyLoadView(import('@pages/other-pages/other-pages'))
+    component: () => lazyLoadView(import('@pages/test-page/test-page')),
+    children: [
+      {
+        path: '/sample',
+        name: 'sample',
+        component: () => lazyLoadView(import('@pages/sample/sample'))
+      },
+      {
+        path: '/other-pages',
+        name: 'other-pages',
+        component: () => lazyLoadView(import('@pages/other-pages/other-pages'))
+      },
+    ]
   },
   {
     path: '/404',
@@ -44,7 +44,7 @@ function lazyLoadView(AsyncView) {
     loading: require('@pages/_loading/_loading').default,
     delay: 400,
     error: require('@pages/_timeout/_timeout').default,
-    timeout: 10000
+    timeout: 1000*100
   })
 
   return Promise.resolve({

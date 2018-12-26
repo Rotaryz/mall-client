@@ -4,6 +4,7 @@ import router from '@router'
 import store from '@state/store'
 import '@components/_globals'
 import {Plugins} from '@utils/plugins'
+import '@utils/mall-utils'
 
 Vue.use(Plugins)
 

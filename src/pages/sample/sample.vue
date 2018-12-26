@@ -25,7 +25,8 @@
   import Cropper from '@components/cropper/cropper'
   import API from '@api'
   import wx from 'weixin-js-sdk'
-
+  // import {BASE_URL} from '../../utils/config'
+  // alert(JSON.stringify(BASE_URL))
   const PAGE_NAME = 'SAMPLE'
 
   export default {
@@ -40,12 +41,13 @@
       }
     },
     created() {
-      console.log(process.env)
-      this.$loading.show()
-      setTimeout(() => {
-        this.$loading.hide()
-      }, 1500)
-      this._getWxSdk()
+      // console.log(process.env)
+      // this.$loading.show()
+      // setTimeout(() => {
+      //   this.$loading.hide()
+      // }, 1500)
+      // this._getWxSdk()
+      // alert(this.$route.query.h)
     },
     methods: {
       createQrCode() {
@@ -143,6 +145,6 @@
   @import "~@design"
 
   .sample
-    fill-box()
-      bottom: $tab-height
+    fill-box(fixed)
+    background :#fff
 </style>

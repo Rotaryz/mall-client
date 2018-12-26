@@ -34,6 +34,7 @@
         }
       },
       hide() {
+        if (!this.isShow) return
         this.content = '数据加载中'
         this.isShow = false
       },
