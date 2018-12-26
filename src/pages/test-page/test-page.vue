@@ -2,6 +2,7 @@
   <div class="test-page">
     test-page
     <router-link tag="div" to="sample?h=123">sample</router-link>
+    <router-link tag="h1" to="/404">404页面</router-link>
     <base-router-view></base-router-view>
   </div>
 </template>
@@ -15,7 +16,6 @@
       return {}
     },
     created() {
-      // alert(JSON.stringify(this.$route.query))
     }
   }
 </script>

@@ -19,11 +19,6 @@ export default [
         name: 'sample',
         component: () => lazyLoadView(import('@pages/sample/sample'))
       },
-      {
-        path: '/other-pages',
-        name: 'other-pages',
-        component: () => lazyLoadView(import('@pages/other-pages/other-pages'))
-      },
     ]
   },
   {

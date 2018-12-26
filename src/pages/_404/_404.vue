@@ -24,6 +24,9 @@
         type: String,
         default: ''
       }
+    },
+    created() {
+      this.$wechat.reLaunch('', '_404Page')
     }
   }
 </script>

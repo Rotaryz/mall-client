@@ -17,6 +17,7 @@
     <router-link tag="h1" to="/hello-world/other-pages">
       跳其他页面
     </router-link>
+    <h1 @click="goback">goback小程序页面回退</h1>
     <base-router-view></base-router-view>
   </div>
 </template>
@@ -41,15 +42,16 @@
       }
     },
     created() {
-      // console.log(process.env)
       // this.$loading.show()
       // setTimeout(() => {
       //   this.$loading.hide()
       // }, 1500)
-      // this._getWxSdk()
-      // alert(this.$route.query.h)
+      this._getWxSdk()
     },
     methods: {
+      goback() {
+        this.$wechat.navigateBack()
+      },
       createQrCode() {
         let str = JSON.stringify({code: 8297128291, store_id: 8}) // todo
         let img = this.$createQrCode.png(str) // png

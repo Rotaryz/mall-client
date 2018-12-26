@@ -8,6 +8,7 @@ import {fileType} from './cos/file-config'
 import * as cos from './cos/cos'
 import * as vod from './vod/vod'
 import createQrCode from './create-qr-code'
+import {$wechat} from './mall-utils'
 
 const ERR_OK = 0
 
@@ -23,6 +24,7 @@ export const Plugins = {
     Vue.prototype.$vod = vod
     Vue.prototype.$createQrCode = createQrCode
     Vue.prototype.$storage = storage
+    Vue.prototype.$wechat = $wechat
   }
 }
 // 使用插件

@@ -19,36 +19,71 @@ function _getSearch() {
 
 export const ENV = _getSearch()
 
+// 判断是否为小程序环境
 export const isMina = window.__wxjs_environment === 'miniprogram'
 
-function _formatNavParams(params) {
+/**
+ * 参数转换
+ * @param params 要跳转的路径
+ * @param targetPage 小程序页面
+ * @returns {string}
+ * @private
+ */
+function _formatNavParams(params, targetPage) {
   params = params.replace('?','&')
-  return `${ENV.detailPage}?host=${location.protocol}//${location.host}${params}`
+  let minaPage = ENV[targetPage] || ENV._secondPage
+  return `${minaPage}?host=${location.protocol}//${location.host}${params}`
 }
-/* 路由 */
-export function navigateTo(params) {
-  console.log(ENV)
-  console.log(_formatNavParams(params))
+
+/* 路由参考小程序api */
+export function navigateTo(params, targetPage) {
   if (isMina) {
-    let url = _formatNavParams(params)
+    let url = _formatNavParams(params, targetPage)
     wx.miniProgram.navigateTo({url})
   } else {
     _this.$router.push(params)
   }
 }
 
+export function navigateBack(delta = 1) {
+  if (isMina) {
+    wx.miniProgram.navigateBack({delta})
+  } else {
+    _this.$router.go(-delta)
+  }
+}
 
-// function navigateBack() {
-// }
-//
-// function switchTab() {
-//
-// }
-//
-// function reLaunch() {
-//
-// }
-//
-// function redirectTo() {
-//
-// }
+export function switchTab(params, targetPage) {
+  if (isMina) {
+    let url = _formatNavParams(params, targetPage)
+    wx.miniProgram.switchTab({url})
+  } else {
+    _this.$router.replace(params)
+  }
+}
+
+export function reLaunch(params, targetPage) {
+  if (isMina) {
+    let url = _formatNavParams(params, targetPage)
+    wx.miniProgram.reLaunch({url})
+  } else {
+    _this.$router.replace(params)
+  }
+}
+
+export function redirectTo(params, targetPage) {
+  if (isMina) {
+    let url = _formatNavParams(params, targetPage)
+    wx.miniProgram.redirectTo({url})
+  } else {
+    _this.$router.replace(params)
+  }
+}
+
+export const $wechat = {
+  navigateTo,
+  navigateBack,
+  switchTab,
+  reLaunch,
+  redirectTo
+}

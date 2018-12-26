@@ -1,6 +1,5 @@
 import {app as _this} from '@src/main'
-import wx from 'weixin-js-sdk'
-import {BASE_URL} from './config'
+import {$wechat} from './mall-utils'
 
 // 判断是否为浏览器环境
 const isBrowser = !!window
@@ -28,9 +27,7 @@ function _handleLoseEfficacy() {
   //   storage.set('beforeLoginRoute', currentRoute)
   // }
   // storage.remove('token')
-  if (window.__wxjs_environment === 'miniprogram') {
-    wx.miniProgram.redirectTo({url: BASE_URL.errorPage})
-  }
+  $wechat.reLaunch('', '_errorPage')
 }
 
 export function showLoading(loading) {
