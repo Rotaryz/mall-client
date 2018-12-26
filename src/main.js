@@ -5,7 +5,12 @@ import store from '@state/store'
 import '@components/_globals'
 import {Plugins} from '@utils/plugins'
 import '@utils/mall-utils'
+import VueClipboard from 'vue-clipboard2'
+import AwesomePicker from 'vue-awesome-picker'
 
+VueClipboard.config.autoSetContainer = true
+
+Vue.use(AwesomePicker)
 Vue.use(Plugins)
 
 Vue.config.productionTip = process.env.NODE_ENV === 'production'
