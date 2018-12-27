@@ -1,5 +1,5 @@
 import {app as _this} from '@src/main'
-import {$wechat, isMina} from './mall-utils'
+import {$wechat} from './mall-utils'
 
 // 判断是否为浏览器环境
 const isBrowser = !!window

@@ -11,7 +11,7 @@ function _checkIsMina() {
   return isMina || isAndroid
 }
 export const isMina = _checkIsMina()
-alert(window.__wxjs_environment)
+alert(isMina)
 
 /* 全局参数 */
 function _getSearch() {
@@ -55,44 +55,44 @@ function _formatNavParams(params, targetPage) {
 export function navigateTo(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram.navigateTo({url})
+    wx.miniProgram && wx.miniProgram.navigateTo({url})
   } else {
-    _this.$router.push(params)
+    _this && _this.$router && _this.$router.push(params)
   }
 }
 
 export function navigateBack(delta = 1) {
   if (isMina) {
-    wx.miniProgram.navigateBack({delta})
+    wx.miniProgram && wx.miniProgram.navigateBack({delta})
   } else {
-    _this.$router.go(-delta)
+    _this && _this.$router && _this.$router.go(-delta)
   }
 }
 
 export function switchTab(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram.switchTab({url})
+    wx.miniProgram && wx.miniProgram.switchTab({url})
   } else {
-    _this.$router.replace(params)
+    _this && _this.$router && _this.$router.replace(params)
   }
 }
 
 export function reLaunch(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram.reLaunch({url})
+    wx.miniProgram && wx.miniProgram.reLaunch({url})
   } else {
-    _this.$router.replace(params)
+    _this && _this.$router && _this.$router.replace(params)
   }
 }
 
 export function redirectTo(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram.redirectTo({url})
+    wx.miniProgram && wx.miniProgram.redirectTo({url})
   } else {
-    _this.$router.replace(params)
+    _this && _this.$router && _this.$router.replace(params)
   }
 }
 
