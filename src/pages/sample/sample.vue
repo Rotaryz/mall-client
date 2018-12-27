@@ -46,7 +46,7 @@
       // setTimeout(() => {
       //   this.$loading.hide()
       // }, 1500)
-      // this._getWxSdk()
+      this._getWxSdk()
     },
     methods: {
       goback() {
