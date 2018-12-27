@@ -83,7 +83,6 @@ export function switchTab(params, targetPage) {
   }
 }
 
-// reLaunch支持不好，用redirectTo
 export function reLaunch(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)

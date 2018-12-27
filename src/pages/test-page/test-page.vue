@@ -1,6 +1,6 @@
 <template>
   <div class="test-page">
-    <router-link tag="div" to="/main/test-page/sample?h=123" class="button">sample</router-link>
+    <router-link tag="div" to="sample?h=123" append class="button">sample</router-link>
     <router-link tag="h1" to="/404" class="button">404页面</router-link>
     <button class="button" @click="test">to 404</button>
     <base-router-view></base-router-view>
@@ -8,19 +8,16 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {isMina} from '@utils/mall-utils'
-
   const PAGE_NAME = 'TEST_PAGE'
 
   export default {
     name: PAGE_NAME,
     data() {
       return {
-        isMina: isMina
       }
     },
     created() {
-      console.log(123123)
+      console.log(this.$route.path)
     },
     methods: {
       test() {

@@ -1,37 +1,4 @@
 export default [
-  // 其他页面主入口
-  {
-    path: '/main',
-    name: 'main',
-    component: () => lazyLoadView(import('@pages/main/main')),
-    children: [
-      // 测试页面注释
-      {
-        path: 'test-page',
-        name: 'test-page',
-        component: () => lazyLoadView(import('@pages/test-page/test-page')),
-        children: [
-          {
-            path: 'sample',
-            name: 'sample',
-            component: () => lazyLoadView(import('@pages/sample/sample'))
-          },
-        ]
-      },
-      {
-        path: 'test-page22',
-        name: 'test-page',
-        component: () => lazyLoadView(import('@pages/test-page/test-page')),
-        children: [
-          {
-            path: 'sample',
-            name: 'sample',
-            component: () => lazyLoadView(import('@pages/sample/sample'))
-          },
-        ]
-      },
-    ]
-  },
   // 首页
   {
     path: '/',
