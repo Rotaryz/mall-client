@@ -2,6 +2,7 @@
   <div class="test-page">
     <router-link tag="div" to="/main/test-page/sample?h=123" class="button">sample</router-link>
     <router-link tag="h1" to="/404" class="button">404页面</router-link>
+    <button @click="test">to 404</button>
     <base-router-view></base-router-view>
   </div>
 </template>
@@ -16,6 +17,11 @@
     },
     created() {
       console.log(123123)
+    },
+    methods: {
+      test() {
+        this.$wechat.reLaunch('', '_404Page')
+      }
     }
   }
 </script>
