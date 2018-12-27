@@ -85,12 +85,14 @@ export function switchTab(params, targetPage) {
 
 // reLaunch支持不好，用redirectTo
 export function reLaunch(params, targetPage) {
-  if (isMina) {
-    let url = _formatNavParams(params, targetPage)
-    _isAndroid() ? wx.miniProgram.redirectTo({url}) : wx.miniProgram.reLaunch({url})
-  } else {
-    _this && _this.$router && _this.$router.replace(params)
-  }
+  let url = _formatNavParams(params, targetPage)
+  wx.miniProgram.reLaunch({url})
+  // if (isMina) {
+  //   let url = _formatNavParams(params, targetPage)
+  //   _isAndroid() ? wx.miniProgram.redirectTo({url}) : wx.miniProgram.reLaunch({url})
+  // } else {
+  //   _this && _this.$router && _this.$router.replace(params)
+  // }
 }
 
 export function redirectTo(params, targetPage) {
