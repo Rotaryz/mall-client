@@ -10,8 +10,18 @@ function _checkIsMina() {
   let isAndroid = /Android|Adr/i.test(ua) // 是Android系统
   return isMina || isAndroid
 }
+
+function ready() {
+  console.log(window.__wxjs_environment === 'miniprogram') // true
+  alert(window.__wxjs_environment === 'miniprogram')
+}
+if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) { // eslint-disable-line
+  document.addEventListener('WeixinJSBridgeReady', ready, false)
+} else {
+  ready()
+}
+
 export const isMina = _checkIsMina()
-alert(isMina)
 
 /* 全局参数 */
 function _getSearch() {
