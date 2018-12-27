@@ -3,11 +3,16 @@
     <h1 class="button" @click="test">test</h1>
     <h2 class="button" @click="error"> error</h2>
     <h3 class="button" @click="test22">tt2222222</h3>
+    <!--<base-router-view v-if="isMina" @refresh="refresh"></base-router-view>-->
+    <!--<router-view v-else @refresh="refresh"></router-view>-->
+    <router-view @refresh="refresh"></router-view>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   // import API from '@api'
+  import {isMina} from '@utils/mall-utils'
+
   const PAGE_NAME = 'HOME'
 
   export default {
@@ -15,15 +20,23 @@
     page: {
       title: 'Home',
     },
+    data() {
+      return {
+        isMina: isMina
+      }
+    },
     created() {
       // API.Global.jssdkConfig()
     },
     methods: {
+      refresh() {
+        // 子路由页面刷新
+      },
       test() {
-        this.$wechat.navigateTo('/main/test-page?cardId=123&orderId=1236871jashd')
+        this.$wechat.navigateTo('/home/test-page?cardId=123&orderId=1236871jashd')
       },
       test22() {
-        this.$wechat.navigateTo('/main/test-page22')
+        this.$wechat.navigateTo('/home/test-page22')
       },
       error() {
         // wx.miniProgram.redirectTo({url: BASE_URL.errorPage})

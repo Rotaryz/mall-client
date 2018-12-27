@@ -8,12 +8,16 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {isMina} from '@utils/mall-utils'
+
   const PAGE_NAME = 'TEST_PAGE'
 
   export default {
     name: PAGE_NAME,
     data() {
-      return {}
+      return {
+        isMina: isMina
+      }
     },
     created() {
       console.log(123123)
@@ -31,6 +35,9 @@
 
   .test-page
     width: 100%
+    fill-box(fixed)
+    background :#fff
+    z-index :20
     .button
       height :50px
 </style>

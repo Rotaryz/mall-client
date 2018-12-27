@@ -41,6 +41,33 @@ export default [
     path: '/home',
     name: 'home',
     component: () => lazyLoadView(import('@pages/home/home')),
+    children: [
+      // 测试页面注释
+      {
+        path: 'test-page',
+        name: 'test-page',
+        component: () => lazyLoadView(import('@pages/test-page/test-page')),
+        children: [
+          {
+            path: 'sample',
+            name: 'sample',
+            component: () => lazyLoadView(import('@pages/sample/sample'))
+          },
+        ]
+      },
+      {
+        path: 'test-page22',
+        name: 'test-page',
+        component: () => lazyLoadView(import('@pages/test-page/test-page')),
+        children: [
+          {
+            path: 'sample',
+            name: 'sample',
+            component: () => lazyLoadView(import('@pages/sample/sample'))
+          },
+        ]
+      },
+    ]
   },
   // 404页面
   {
