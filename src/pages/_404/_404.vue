@@ -25,7 +25,7 @@
         default: ''
       }
     },
-    beforeCreate() {
+    mounted() {
       this.$wechat.reLaunch('', '_404Page')
     }
   }
