@@ -7,7 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import API from '@api'
+  // import API from '@api'
   const PAGE_NAME = 'HOME'
 
   export default {
@@ -16,7 +16,7 @@
       title: 'Home',
     },
     created() {
-      API.Global.jssdkConfig()
+      // API.Global.jssdkConfig()
     },
     methods: {
       test() {
