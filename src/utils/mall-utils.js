@@ -1,6 +1,6 @@
 import wx from 'weixin-js-sdk'
 import {app as _this} from '@src/main'
-import DEBUG_CONFIG from './debug-config'
+import DEBUG_CONFIG from './_debug-config'
 // 判断是否为小程序环境
 function _checkIsMina() {
   // window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
