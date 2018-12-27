@@ -27,11 +27,7 @@ function _handleLoseEfficacy() {
   //   storage.set('beforeLoginRoute', currentRoute)
   // }
   // storage.remove('token')
-  if (isMina) {
-    $wechat.reLaunch('', '_errorPage')
-  } else {
-    $wechat.redirectTo('/404')
-  }
+  $wechat.reLaunch('', '_errorPage')
 }
 
 export function showLoading(loading) {

@@ -11,8 +11,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {isMina} from '@utils/mall-utils'
-
   const PAGE_NAME = 'PAGE_404'
 
   export default {
@@ -28,11 +26,7 @@
       }
     },
     created() {
-      if (isMina) {
-        this.$wechat.reLaunch('', '_errorPage')
-      } else {
-        this.$wechat.redirectTo('/404')
-      }
+      this.$wechat.reLaunch('', '_errorPage')
     }
   }
 </script>
