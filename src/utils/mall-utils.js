@@ -1,38 +1,22 @@
 import wx from 'weixin-js-sdk'
 import {app as _this} from '@src/main'
 import DEBUG_CONFIG from './_debug-config'
+
+// window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+const ua = '' + window.navigator.userAgent.toLowerCase()
+// mina判断
+function _isM() {
+  return window.__wxjs_environment === 'miniprogram'
+}
+// 安卓判断
+function _isAndroid() {
+  return /Android|Adr/i.test(ua) // 是Android系统
+}
 // 判断是否为小程序环境
 function _checkIsMina() {
-  // window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
-  let ua = '' + window.navigator.userAgent.toLowerCase()
-  // 通过正则表达式匹配ua中是否含有MicroMessenger字符串且是IOS系统
-  let isMina = window.__wxjs_environment === 'miniprogram'
-  let isAndroid = /Android|Adr/i.test(ua) // 是Android系统
-  return isMina || isAndroid
+  return _isM() || _isAndroid()
 }
-
-// function ready() {
-//   console.log(window.__wxjs_environment === 'miniprogram') // true
-//   alert(window.__wxjs_environment === 'miniprogram')
-// }
-// if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) { // eslint-disable-line
-//   document.addEventListener('WeixinJSBridgeReady', ready, false)
-// } else {
-//   ready()
-// }
 export const isMina = _checkIsMina()
-// function _checkIsMina() {
-//   return new Promise((resolve, reject) => {
-//     if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) { // eslint-disable-line
-//       document.addEventListener('WeixinJSBridgeReady', () => {
-//         resolve(window.__wxjs_environment === 'miniprogram')
-//       }, false)
-//     } else {
-//       resolve(window.__wxjs_environment === 'miniprogram')
-//     }
-//   })
-// }
-// _checkIsMina().then((val) => {isMina = val})
 
 /* 全局参数 */
 function _getSearch() {
@@ -103,7 +87,7 @@ export function switchTab(params, targetPage) {
 export function reLaunch(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram.reLaunch({url})
+    _isAndroid() ? wx.miniProgram.redirectTo({url}) : wx.miniProgram.reLaunch({url})
   } else {
     _this && _this.$router && _this.$router.replace(params)
   }

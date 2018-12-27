@@ -27,7 +27,7 @@ function _handleLoseEfficacy() {
   //   storage.set('beforeLoginRoute', currentRoute)
   // }
   // storage.remove('token')
-  $wechat.redirectTo('/404', '_errorPage')
+  $wechat.reLaunch('/404', '_errorPage')
 }
 
 export function showLoading(loading) {
