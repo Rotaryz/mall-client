@@ -11,9 +11,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {$wechat} from '@utils/mall-utils'
-  // import wx from 'weixin-js-sdk'
-
   const PAGE_NAME = 'PAGE_404'
 
   export default {
@@ -29,9 +26,7 @@
       }
     },
     beforeCreate() {
-      // let url = '/pages/error'
-      // wx.miniProgram.redirectTo({url})
-      $wechat.redirectTo('', '_404Page')
+      this.$wechat.reLaunch('', '_404Page')
     }
   }
 </script>

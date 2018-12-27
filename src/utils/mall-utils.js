@@ -122,6 +122,6 @@ export const $wechat = {
   navigateTo,
   navigateBack,
   switchTab,
-  // reLaunch,
+  reLaunch,
   redirectTo
 }
