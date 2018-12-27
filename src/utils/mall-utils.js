@@ -11,17 +11,28 @@ function _checkIsMina() {
   return isMina || isAndroid
 }
 
-function ready() {
-  console.log(window.__wxjs_environment === 'miniprogram') // true
-  alert(window.__wxjs_environment === 'miniprogram')
-}
-if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) { // eslint-disable-line
-  document.addEventListener('WeixinJSBridgeReady', ready, false)
-} else {
-  ready()
-}
-
+// function ready() {
+//   console.log(window.__wxjs_environment === 'miniprogram') // true
+//   alert(window.__wxjs_environment === 'miniprogram')
+// }
+// if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) { // eslint-disable-line
+//   document.addEventListener('WeixinJSBridgeReady', ready, false)
+// } else {
+//   ready()
+// }
 export const isMina = _checkIsMina()
+// function _checkIsMina() {
+//   return new Promise((resolve, reject) => {
+//     if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) { // eslint-disable-line
+//       document.addEventListener('WeixinJSBridgeReady', () => {
+//         resolve(window.__wxjs_environment === 'miniprogram')
+//       }, false)
+//     } else {
+//       resolve(window.__wxjs_environment === 'miniprogram')
+//     }
+//   })
+// }
+// _checkIsMina().then((val) => {isMina = val})
 
 /* 全局参数 */
 function _getSearch() {
@@ -44,10 +55,10 @@ let envConfig = {}
 if (isMina) {
   envConfig = _getSearch()
 } else {
+  alert('debug')
   envConfig = DEBUG_CONFIG
 }
 export const ENV = envConfig
-console.log(ENV)
 /**
  * 参数转换
  * @param params 要跳转的路径
@@ -58,14 +69,14 @@ console.log(ENV)
 function _formatNavParams(params, targetPage) {
   params = params.replace('?','&')
   let minaPage = ENV[targetPage] || ENV._mainPage
-  return `${minaPage}?host=${location.protocol}//${location.host}${params}`
+  return `${minaPage}?host=${window.location.protocol}//${window.location.host}${params}`
 }
 
 /* 路由参考小程序api */
 export function navigateTo(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram && wx.miniProgram.navigateTo({url})
+    wx.miniProgram.navigateTo({url})
   } else {
     _this && _this.$router && _this.$router.push(params)
   }
@@ -73,7 +84,7 @@ export function navigateTo(params, targetPage) {
 
 export function navigateBack(delta = 1) {
   if (isMina) {
-    wx.miniProgram && wx.miniProgram.navigateBack({delta})
+    wx.miniProgram.navigateBack({delta})
   } else {
     _this && _this.$router && _this.$router.go(-delta)
   }
@@ -82,7 +93,7 @@ export function navigateBack(delta = 1) {
 export function switchTab(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram && wx.miniProgram.switchTab({url})
+    wx.miniProgram.switchTab({url})
   } else {
     _this && _this.$router && _this.$router.replace(params)
   }
@@ -92,7 +103,7 @@ export function switchTab(params, targetPage) {
 export function reLaunch(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram && wx.miniProgram.reLaunch({url})
+    wx.miniProgram.reLaunch({url})
   } else {
     _this && _this.$router && _this.$router.replace(params)
   }
@@ -101,7 +112,7 @@ export function reLaunch(params, targetPage) {
 export function redirectTo(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    wx.miniProgram && wx.miniProgram.redirectTo({url})
+    wx.miniProgram.redirectTo({url})
   } else {
     _this && _this.$router && _this.$router.replace(params)
   }
