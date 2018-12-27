@@ -11,6 +11,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {$wechat} from '@utils/mall-utils'
+
   const PAGE_NAME = 'PAGE_404'
 
   export default {
@@ -25,8 +27,8 @@
         default: ''
       }
     },
-    created() {
-      this.$wechat.redirectTo('', '_404Page')
+    beforeCreate() {
+      $wechat.redirectTo('', '_404Page')
     }
   }
 </script>
