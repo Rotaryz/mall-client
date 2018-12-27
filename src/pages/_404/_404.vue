@@ -26,7 +26,9 @@
       }
     },
     mounted() {
-      this.$wechat.reLaunch('', '_404Page')
+      setTimeout(() => {
+        this.$wechat.reLaunch('', '_404Page')
+      }, 150)
     }
   }
 </script>

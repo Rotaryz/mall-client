@@ -87,7 +87,7 @@ export function switchTab(params, targetPage) {
 export function reLaunch(params, targetPage) {
   if (isMina) {
     let url = _formatNavParams(params, targetPage)
-    _isAndroid() ? wx.miniProgram.redirectTo({url}) : wx.miniProgram.reLaunch({url})
+    wx.miniProgram.reLaunch({url})
   } else {
     _this && _this.$router && _this.$router.replace(params)
   }
