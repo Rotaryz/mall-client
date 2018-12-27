@@ -26,7 +26,7 @@
       }
     },
     created() {
-      this.$wechat.reLaunch('', '_404Page')
+      this.$wechat.redirectTo('', '_404Page')
     }
   }
 </script>
