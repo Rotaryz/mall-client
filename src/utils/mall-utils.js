@@ -47,7 +47,7 @@ console.log(ENV)
  */
 function _formatNavParams(params, targetPage) {
   params = params.replace('?','&')
-  let minaPage = ENV[targetPage] || ENV._secondPage
+  let minaPage = ENV[targetPage] || ENV._mainPage
   return `${minaPage}?host=${location.protocol}//${location.host}${params}`
 }
 
