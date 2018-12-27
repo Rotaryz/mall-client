@@ -28,7 +28,11 @@
       }
     },
     created() {
-      isMina && this.$wechat.reLaunch('', '_404Page')
+      if (isMina) {
+        this.$wechat.reLaunch('', '_errorPage')
+      } else {
+        this.$wechat.redirectTo('/404')
+      }
     }
   }
 </script>
