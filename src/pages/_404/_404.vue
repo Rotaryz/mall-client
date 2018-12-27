@@ -24,12 +24,12 @@
         type: String,
         default: ''
       }
-    },
-    mounted() {
-      setTimeout(() => {
-        this.$wechat.reLaunch('', '_404Page')
-      }, 150)
     }
+    // mounted() {
+    //   setTimeout(() => {
+    //     this.$wechat.reLaunch('', '_404Page')
+    //   }, 150)
+    // }
   }
 </script>
 

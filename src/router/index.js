@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
 import routes from './routes'
+import {$wechat, isMina} from '@utils/mall-utils'
 // import NProgress from 'nprogress/nprogress'
 
 // NProgress.configure({showSpinner: false})
@@ -27,6 +28,9 @@ router.beforeEach((routeTo, routeFrom, next) => {
   // if (routeFrom.name !== null) {
   //   NProgress.start()
   // }
+  if (routeTo.name === '404') {
+    isMina && $wechat.reLaunch('','_404Page')
+  }
   return next()
 })
 
