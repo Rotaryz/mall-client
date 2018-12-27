@@ -1,7 +1,7 @@
 'use strict'
 
 import axios from 'axios'
-import storage from 'storage-controller'
+// import storage from 'storage-controller'
 import * as Utils from './request-utils'
 import {BASE_URL} from './config'
 
@@ -19,7 +19,8 @@ const http = axios.create({
 http.interceptors.request.use(
   (config) => {
     // 请求数据前的拦截
-    config.headers['Authorization'] = storage.get('token', '')
+    config.headers['Access-Token'] = BASE_URL.token
+    config.headers['Merchant-Uid'] = BASE_URL.merchantUid
     return config
   },
   (error) => {

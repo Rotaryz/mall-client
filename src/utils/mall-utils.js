@@ -1,5 +1,18 @@
 import wx from 'weixin-js-sdk'
 import {app as _this} from '@src/main'
+import DEBUG_CONFIG from './debug-config'
+// 判断是否为小程序环境
+function _checkIsMina() {
+  // window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+  let ua = '' + window.navigator.userAgent.toLowerCase()
+  // 通过正则表达式匹配ua中是否含有MicroMessenger字符串且是IOS系统
+  let isMina = window.__wxjs_environment === 'miniprogram'
+  let isAndroid = /Android|Adr/i.test(ua) // 是Android系统
+  return isMina || isAndroid
+}
+export const isMina = _checkIsMina()
+alert(window.__wxjs_environment)
+
 /* 全局参数 */
 function _getSearch() {
   let args = {}
@@ -16,12 +29,15 @@ function _getSearch() {
   }
   return args
 }
-
-export const ENV = _getSearch()
-
-// 判断是否为小程序环境
-export const isMina = window.__wxjs_environment === 'miniprogram'
-
+// 调试模式
+let envConfig = {}
+if (isMina) {
+  envConfig = _getSearch()
+} else {
+  envConfig = DEBUG_CONFIG
+}
+export const ENV = envConfig
+console.log(ENV)
 /**
  * 参数转换
  * @param params 要跳转的路径

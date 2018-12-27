@@ -1,6 +1,6 @@
 <template>
   <div class="404">
-    <h1 :class="$style.title">
+    <h1 class="title">
       404
       <template v-if="resource">
         {{resource}}
@@ -11,7 +11,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  const PAGE_NAME = '404'
+  import {isMina} from '@utils/mall-utils'
+
+  const PAGE_NAME = 'PAGE_404'
 
   export default {
     name: PAGE_NAME,
@@ -26,7 +28,7 @@
       }
     },
     created() {
-      this.$wechat.reLaunch('', '_404Page')
+      isMina && this.$wechat.reLaunch('', '_404Page')
     }
   }
 </script>

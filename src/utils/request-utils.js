@@ -1,5 +1,5 @@
 import {app as _this} from '@src/main'
-import {$wechat} from './mall-utils'
+import {$wechat, isMina} from './mall-utils'
 
 // 判断是否为浏览器环境
 const isBrowser = !!window
@@ -27,7 +27,11 @@ function _handleLoseEfficacy() {
   //   storage.set('beforeLoginRoute', currentRoute)
   // }
   // storage.remove('token')
-  $wechat.reLaunch('', '_errorPage')
+  if (isMina) {
+    $wechat.reLaunch('', '_errorPage')
+  } else {
+    $wechat.redirectTo('/404')
+  }
 }
 
 export function showLoading(loading) {

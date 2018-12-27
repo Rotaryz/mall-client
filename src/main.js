@@ -5,6 +5,7 @@ import store from '@state/store'
 import '@components/_globals'
 import {Plugins} from '@utils/plugins'
 import '@utils/mall-utils'
+import '@utils/compatible'
 import VueClipboard from 'vue-clipboard2'
 import AwesomePicker from 'vue-awesome-picker'
 

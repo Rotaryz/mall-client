@@ -1,8 +1,7 @@
 <template>
   <div class="test-page">
-    test-page
-    <router-link tag="div" to="sample?h=123">sample</router-link>
-    <router-link tag="h1" to="/404">404页面</router-link>
+    <router-link tag="div" to="/main/test-page/sample?h=123" class="button">sample</router-link>
+    <router-link tag="h1" to="/404" class="button">404页面</router-link>
     <base-router-view></base-router-view>
   </div>
 </template>
@@ -16,6 +15,7 @@
       return {}
     },
     created() {
+      console.log(123123)
     }
   }
 </script>
@@ -25,4 +25,6 @@
 
   .test-page
     width: 100%
+    .button
+      height :50px
 </style>
