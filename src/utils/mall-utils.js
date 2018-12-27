@@ -86,7 +86,9 @@ export function switchTab(params, targetPage) {
 // reLaunch支持不好，用redirectTo
 export function reLaunch(params, targetPage) {
   let url = _formatNavParams(params, targetPage)
-  wx.miniProgram.reLaunch({url})
+  setTimeout(() => {
+    wx.miniProgram.reLaunch({url})
+  }, 20)
   // if (isMina) {
   //   let url = _formatNavParams(params, targetPage)
   //   _isAndroid() ? wx.miniProgram.redirectTo({url}) : wx.miniProgram.reLaunch({url})
